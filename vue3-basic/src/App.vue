@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <base-modal 
+  v-if="isShowModal"
+  title="đây là modal" 
+  content="đây là content"
+  theme="wrong"
+  @cancel="onToggleModal"
+  />
+  <button @click="onToggleModal">Toggle Modal</button>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Modal from "./components/Modal.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    BaseModal: Modal
+  },
+  data() {
+    return {
+      isShowModal: false,
+    };
+  },
+  methods: {
+    onToggleModal() {
+      this.isShowModal = !this.isShowModal;
+    }
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
